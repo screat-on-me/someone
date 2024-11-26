@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #output {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        const lines = [
+            { text: "hallowwww", charDelay: 70 },
+            { text: "apa kabar kamuuu?", charDelay: 70 },
+            { text: "mudahan kamu baik yaaaaaa", charDelay: 70 },
+            { text: "oh ya semoga hari kamu selalu menyenangkan", charDelay: 70 },
+            { text: "mudah mudahan kita bisa ketemu yaaa", charDelay: 50 },
+            { text: "i miss you", charDelay: 70 },
+            { text: "kalopun kamu ngga kangen aku ngga papa kok", charDelay: 70 },
+            { text: "i stil miss you in univers wkwkwkwk", charDelay: 70 },
+            { text: "maaf ya aku banyak salah sama kamu", charDelay: 70 },
+            { text: "mudahan kamu maafin aku", charDelay: 70 },
+            { text: "oh ya semoga hari hari mu bahgia", charDelay: 70 },
+            { text: "salam hangat dari aku untuk kamu", charDelay: 70 }
+        ];
+
+        const delays = [500, 500, 500, 500, 500, 500, 300, 300, 500, 500, 500, 500];
+        const output = document.getElementById('output');
+
+        async function typeText() {
+            for (let i = 0; i < lines.length; i++) {
+                const { text, charDelay } = lines[i];
+                for (const char of text) {
+                    output.textContent += char;
+                    await new Promise(resolve => setTimeout(resolve, charDelay));
+                }
+                output.textContent += "\n";
+                await new Promise(resolve => setTimeout(resolve, delays[i]));
+            }
+        }
+
+        typeText();
+    </script>
+</body>
+</html>
